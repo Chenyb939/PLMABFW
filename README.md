@@ -26,8 +26,8 @@ cd PLMABFW
 
 2. Creat irtual environment and :
 ```bash
-   conda create -n PLMABFW python=3.9
-   conda activate PLMABFW
+conda create -n PLMABFW python=3.9
+conda activate PLMABFW
 ```
 
 3. install the required dependencies:  
