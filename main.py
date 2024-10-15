@@ -16,7 +16,7 @@ from antiberty import AntiBERTyRunner
 
 sys.path.append("")
 from utils import EarlyStopping, calculate_performance
-from MyData import MyData
+from Data import MyData
 from Model import ESMberty_model
 
 warnings.filterwarnings("ignore")

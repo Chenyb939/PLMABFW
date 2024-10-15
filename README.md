@@ -9,6 +9,8 @@
   - [Installation](#installation)
   - [Quick Start](#quick-start)
     - [Modify the Config File](#modify-the-config-file)
+    - [Train your own model](#train-your-own-model)
+    - [Folder Structure Details](#folder-structure-details)
   - [Contributing](#contributing)
   - [License](#license)
 
@@ -21,11 +23,13 @@ To get started with PLMABFW, follow these steps:
 git clone https://github.com/Chenyb939/PLMTHP
 cd PLMABFW
 ```
+
 2. Creat irtual environment and :
 ```bash
    conda create -n PLMABFW python=3.9
    conda activate PLMABFW
 ```
+
 3. install the required dependencies:  
 PLMABFM utilizes [ESM](https://github.com/facebookresearch/esm) and [AntiBERTy](https://github.com/jeffreyruffolo/AntiBERTy) for encoding purposes. Before you begin, ensure that both ESM and AntiBERTy are properly installed on your system. If not, you can use the following commands to install them.
 
@@ -36,7 +40,6 @@ pip install git+https://github.com/facebookresearch/esm.git
 ```
 
 3.2 Install [AntiBERTy](https://github.com/jeffreyruffolo/AntiBERTy)
-
 ```bash
 pip install antiberty  # latest release, OR:
 git clone git@github.com:jeffreyruffolo/AntiBERTy.git 
@@ -50,10 +53,11 @@ pip install Biopython pandas tensorboard matplotlib scikit-learn
 ```
 
 ## Quick Start
-After pip install, you can load and use a pretrained model as follows:
+After pip install, you can use PLMABFW as follows:
 
 ### Modify the Config File
-Please adjust the configuration file according to your specific requirements.
+Before run the PLMABFW, please adjust the configuration file according to your specific requirements.
+
 ```config
 [path]
 input_data = ./data  # Path to the input data directory
@@ -64,28 +68,29 @@ epoch = 500  # Total number of training epochs
 patience = 30  # How long to wait after last time model improved
 
 [output]
-tag = train_example  # label your output
-log_dir = ./log  # Directory for training logs
-model_dir = ./model  # Directory for training the trained model
-result_dir = ./result  # Directory to store results
+tag = example  # label your output
+model_dir = ./model  # Directory for store the trained model
+result_dir = ./result  # Directory for store results
+log_dir = ./log  # Directory for store training logs
 
 [other]
 gpus = 1  # The GPU number used for running PLMABFW
 ```
 
-After install, you can use the train you own model as follows:
+### Train your own model
+You can use the following command to train you own model:
 
 ```bash
 python main.py train --config ./config
 ```
 
-You can use the test you own model as follows:
+Once the training process is complete, you can utilize the following command to test the model:
 
 ```bash
 python main.py test --config ./config
 ```
 
-You can use the test you own model as follows:
+The procedure to utilize PLMABFW is outlined as follows:
 
 ```bash
   usage: python main.py [mode] [--config] [--target_chain]
@@ -97,6 +102,27 @@ optional arguments:
   --config CONFIG  Path to the config file.
   --seed SEED      Random seed.
   ```
+
+### Folder Structure Details
+When you run PLMABFW using the default parameters from the config file, the resulting folder structure will be as follows:
+
+   ``` fold
+   PLMABFW
+   │
+   ├── data                 Directory for store the dataset
+   ├── model                Directory for store the trained model
+   ├── result               Directory for store results
+   ├── log                  Directory for store training logs
+   │
+   ├── main.py              PLMABFW main program
+   ├── Model.py             PLMABFW Model
+   ├── MyData.py            PLMABFW dataset
+   ├── utils.py             PLMABFW dependencies
+   ├── config               Configuration file
+   ├── LICENSE              LICENSE
+   └── requirements.txt     Python environment dependencies
+
+   ```
 
 <!-- - ## Documentation / - [Documentation](#documentation)-->
 

@@ -7,10 +7,10 @@ epoch = 500  # Total number of training epochs
 patience = 30  # How long to wait after last time model improved
 
 [output]
-tag = train_example  # label your output
-log_dir = ./log  # Directory for training logs
-model_dir = ./model  # Directory for training the trained model
-result_dir = ./result  # Directory to store results
+tag = example  # label your output
+model_dir = ./model  # Directory for store the trained model
+result_dir = ./result  # Directory for store results
+log_dir = ./log  # Directory for store training logs
 
 [other]
 gpus = 1  # The GPU number used for running PLMABFW
